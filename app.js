@@ -1,7 +1,6 @@
 const express = require("express");
 const request = require("request");
 const https = require("https");
-// const client = require("@mailchimp/mailchimp_marketing");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
@@ -14,9 +13,6 @@ app.get("/", (req, res) => {
 })
 
 app.use(express.urlencoded({ extended: true }));
-
-
-
 
 
 //Setting up MailChimp
@@ -72,72 +68,9 @@ mailchimp.setConfig({
 
    
     const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
+    app.listen(PORT, () => { 
         console.log("Server is running on PORT "+PORT);
     })
-
-
-// app.post("/", (req, res) => {
-//     const firstName = req.body.firstName;
-//     const lastName = req.body.lastName;
-//     const email = req.body.email;
-//     console.log(`
-//     ${firstName}
-//     ${lastName}
-//     ${email}`);
-
-
-
-//     // client.setConfig({
-//     //     apiKey: "66b5e5086063c7809423cd24fbc2c79c-us14",
-//     //     server: "us14",
-//     // });
-    
-//     // const run = async () => {
-//     //     const list_id = "04462464fe";
-//     //     const response = await client.lists.batchListMembers("list_id", {
-//     //         members: [{
-//     //             email_address: email,
-//     //             status: "subscribed",
-//     //             merge_fields: {
-//     //                 FIRSTNAME: firstName,
-//     //                 LASTNAME: lastName
-//     //             }
-//     //         }],
-//     //     });
-//     //     console.log(response);
-//     // };
-    
-//     // run();
-
-
-//     const data = {
-//         member =[
-//             {
-//                 email_address: email,
-//                 status: "subscribed",
-//                 merge_fields: {
-//                     FIRSTNAME: firstName,
-//                     LASTNAME: lastName
-//                 }
-//             }]
-//     };
-//     const jsonData = JSON.stringify(data);
-//     console.log(jsonData);
-
-//     const url = "https://us14.api.mailchimp.com/3.0/lists/66b5e5086063c7809423cd24fbc2c79c-us14"
-
-//     const options = {
-//         method: "POST",
-//         auth: "Pranay:66b5e5086063c7809423cd24fbc2c79c-us14"
-//     }
-
-//     https.request(url, options, (response) => {
-//         response.on("data", (data) => {
-//             console.log(JSON.parse(data));
-//         })
-//     })
-// })
 
 
 
